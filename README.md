@@ -1,0 +1,1 @@
+Este es un proyecto para automatizar el proces de crar articulos de las clases de Platzi. Cómo tratar con las imagenes es uno de los requisitos más tedioses cree este script en Python para automatizar esa parte.
