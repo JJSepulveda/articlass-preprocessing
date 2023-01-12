@@ -13,6 +13,7 @@ import zipfile
 from utils import delete_nameId
 from utils import get_filename
 from utils import preprocess_string
+from utils import remove_special_characters
 
 # load environment variables
 DEBUG = config("DEBUG", default=False, cast=bool)
@@ -84,6 +85,8 @@ def make_dictionary_with_all_files_images(markdown_files: List[str]) -> Dict[str
         filename = delete_nameId(filename)
         # Tampoco queremos la extensión
         filename, _ = os.path.splitext(filename)
+        # Tampoco queremos caracteres especiales
+        filename = remove_special_characters(filename)
         # Ahora la vamos a preprocesar
         filename = preprocess_string(filename[0:-2])
         logging.debug(filename)
@@ -110,6 +113,7 @@ def main():
     logging.debug(markdown_files)
 
     # The dirname where images are placed is the same as the file name
+    # Test the function that gets only the filename.
     logging.debug(get_filename(markdown_files[0]))
     
     # Get list of images of each markdown file
